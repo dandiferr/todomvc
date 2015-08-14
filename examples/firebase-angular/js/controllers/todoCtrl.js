@@ -7,11 +7,12 @@
  * - exposes the model to the template and provides event handlers
  */
 todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArray) {
-	var url = 'https://todomvc-angular.firebaseio.com/todos';
+	var url = 'https://scorching-heat-2020.firebaseio.com/';
 	var fireRef = new Firebase(url);
 
 	// Bind the todos to the firebase provider.
 	$scope.todos = $firebaseArray(fireRef);
+	console.log($scope.todos)
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
 

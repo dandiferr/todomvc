@@ -5,29 +5,36 @@
 		<title>Firebase &amp; AngularJS • TodoMVC</title>
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="css/style.css">
 		<style>[ng-cloak] { display: none; }</style>
 	</head>
 	<body>
 		<section id="todoapp" ng-controller="TodoCtrl">
 			<header id="header">
-				<h1>todos</h1>
-				<form id="todo-form" ng-submit="addTodo()">
-					<input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+				<h1>five zero zero</h1>
+				<h2>Find descriptions and social media accounts of Fortune 500 companies</h2>
+				<form id="todo-form" ng-submit="filterDb()">
+					<input id="new-todo" placeholder="Type a company name" ng-model="newTodo" autofocus>
 				</form>
 			</header>
-			<section id="main" ng-show="totalCount" ng-cloak>
-				<input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
-				<label for="toggle-all">Mark all as complete</label>
+			<section id="main" ng-cloak>
 				<ul id="todo-list">
-					<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+					<li ng-repeat="(id, todo) in todos" ng-class="">
 						<div class="view">
-							<input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(todo)">
-							<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
-							<button class="destroy" ng-click="removeTodo(todo)"></button>
+							<h2 class="toggle">{{todo.FIELD8}}</h2>
+							<label>{{todo.FIELD7}}</label>
+							<h2 class="social">
+								<a href="http://www.facebook.com/{{todo.FIELD4}}" target="_blank">
+									<img src="http://divasmobilesolutions.com/wp-content/uploads/2012/02/fbicon-e1329880206895.png" class="img-icon">
+								</a>
+								<a href="http://www.twitter.com/{{todo.FIELD5}}" target="_blank">
+									<img src="http://divasmobilesolutions.com/wp-content/uploads/2012/02/twittericon-e1329880313794.png" class="img-icon">
+								</a>
+								<a href="http://www.linkedin.com/company/{{todo.FIELD6}}" target="_blank">
+									<img src="http://divasmobilesolutions.com/wp-content/uploads/2012/02/linkedinicon-e1329880359341.png" class="img-icon">
+								</a>
+							</h2>
 						</div>
-						<form ng-submit="doneEditing(todo)">
-							<input class="edit" ng-model="todo.title" todo-escape="revertEditing(todo)" todo-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
-						</form>
 					</li>
 				</ul>
 			</section>
@@ -50,17 +57,8 @@
 			</footer>
 		</section>
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
-			<p>Credits:
-				<a href="http://twitter.com/cburgdorf">Christoph Burgdorf</a>,
-				<a href="http://ericbidelman.com">Eric Bidelman</a>,
-				<a href="http://twitter.com/_davideast">David East</a>,
-				<a href="http://jacobmumm.com">Jacob Mumm</a> and
-				<a href="http://igorminar.com">Igor Minar</a>
-			</p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
-		<script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angularfire/dist/angularfire.js"></script>
